@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YQC-dS-pes" customClass="CardCell" customModule="MatchGame" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="197" height="322"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="197" height="322"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4gg-lW-KxL">
+                        <rect key="frame" x="0.0" y="0.0" width="197" height="322"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card-back-image" translatesAutoresizingMaskIntoConstraints="NO" id="OqO-Ur-ZnN">
+                        <rect key="frame" x="0.0" y="0.0" width="197" height="322"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="4gg-lW-KxL" firstAttribute="leading" secondItem="YQC-dS-pes" secondAttribute="leading" id="3R3-9g-Ufw"/>
+                <constraint firstAttribute="bottom" secondItem="4gg-lW-KxL" secondAttribute="bottom" id="84l-L6-0gp"/>
+                <constraint firstItem="OqO-Ur-ZnN" firstAttribute="leading" secondItem="YQC-dS-pes" secondAttribute="leading" id="P14-41-TBT"/>
+                <constraint firstItem="4gg-lW-KxL" firstAttribute="top" secondItem="YQC-dS-pes" secondAttribute="top" id="aG8-ck-aGH"/>
+                <constraint firstAttribute="trailing" secondItem="4gg-lW-KxL" secondAttribute="trailing" id="sg2-vo-Whh"/>
+                <constraint firstAttribute="trailing" secondItem="OqO-Ur-ZnN" secondAttribute="trailing" id="w3n-oO-veF"/>
+                <constraint firstAttribute="bottom" secondItem="OqO-Ur-ZnN" secondAttribute="bottom" id="wlx-06-2XM"/>
+                <constraint firstItem="OqO-Ur-ZnN" firstAttribute="top" secondItem="YQC-dS-pes" secondAttribute="top" id="xzM-aL-A2D"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="yHN-Fq-afF"/>
+            <size key="customSize" width="197" height="322"/>
+            <connections>
+                <outlet property="backImageView" destination="OqO-Ur-ZnN" id="x1n-zx-o0g"/>
+                <outlet property="frontImageView" destination="4gg-lW-KxL" id="V6m-7d-mxi"/>
+            </connections>
+            <point key="canvasLocation" x="12.318840579710146" y="-70.982142857142847"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="card-back-image" width="288" height="512"/>
+    </resources>
+</document>

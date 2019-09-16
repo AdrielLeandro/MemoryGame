@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  MatchGame
+
+  Created by Adriel on 9/15/19.
+  Copyright © 2019 Adriel Pinzas. All rights reserved.
+*/
+
+"title" = "Memory Game";
+"match-screen.point" = "Points: %i";
+"match-screen.mached" = "Mached Cards: %@";
+"alert.title" = "Great!";
+"alert.message" = "You Win The Game!!!";
+"alert.second-message" = "Are you sure you want to leave the game?";
+"alert.third-message" = "Are you sure you want to restart the game? \nYour progress will be lost";
+
+"alert.ok-button" = "ok";
+"alert.cancel-button" = "Cancel";

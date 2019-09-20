@@ -33,7 +33,6 @@ extension SelectViewModel {
     func setupOptionArray() {
         switch typeOption {
         case .difficult:
-
             viewModelArray = difficultArray.map { type -> OptionCellViewModel in
                 switch type {
                 case .easy:

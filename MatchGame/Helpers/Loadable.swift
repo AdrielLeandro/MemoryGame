@@ -38,7 +38,7 @@ extension Loadable where Self: UIViewController {
 
 class ContainerLoader: UIView{
 
-    var loader = UIActivityIndicatorView()
+    let loader = UIActivityIndicatorView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 100)))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,6 +59,7 @@ class ContainerLoader: UIView{
         loader.hidesWhenStopped = true
         loader.style = .gray
         addSubview(loader)
+
     }
 
 }

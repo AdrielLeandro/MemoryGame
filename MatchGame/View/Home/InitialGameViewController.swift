@@ -13,7 +13,7 @@ class InitialGameViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Chalkduster", size: 50)
+        label.font = UIFont.extraLargeRegularFont
         label.text = "Game \nMached"
         label.numberOfLines = 2
         label.textColor = .white
@@ -27,39 +27,22 @@ class InitialGameViewController: UIViewController {
     }()
 
     lazy var continueButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = CustomButton()
         button.setTitle("Continue", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Chalkduster", size: 15)
-        button.layer.borderColor = Palette.beige.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 10
-        button.isUserInteractionEnabled = false
         button.addTarget(self, action: #selector(didTouchContinueButton), for: .touchUpInside)
         return button
     }()
 
     lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = CustomButton()
         button.setTitle("Back", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Chalkduster", size: 15)
-        button.layer.borderColor = Palette.beige.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(didTouchBackButton), for: .touchUpInside)
         return button
     }()
 
     lazy var startButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = CustomButton()
         button.setTitle("Start", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Chalkduster", size: 15)
-        button.layer.borderColor = Palette.beige.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 10
-        button.isUserInteractionEnabled = false
         button.addTarget(self, action: #selector(didTouchStartButton), for: .touchUpInside)
         return button
     }()
@@ -74,8 +57,8 @@ class InitialGameViewController: UIViewController {
     }()
 
 
-    let selectDifficultViewController = SelectViewController()
-    let selectSizeViewController = SelectViewController()
+    var selectDifficultViewController = SelectViewController()
+    var selectSizeViewController = SelectViewController()
 
     var viewModel: InitialGameViewModel?
 
@@ -86,6 +69,15 @@ class InitialGameViewController: UIViewController {
         setupViewModel()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
 
     func setupUI() {
         setupTitleLabel()
@@ -153,7 +145,21 @@ class InitialGameViewController: UIViewController {
         let matchGameViewController = MatchGameViewController()
         matchGameViewController.viewModel = MatchGameViewModel(game: game, service: ProductService())
         navigationController?.pushViewController(matchGameViewController, animated: true)
-        //Limpiar view model 
+        cleanView()
+    }
+
+    private func cleanView() {
+        stackView.removeFromSuperview()
+        startButton.removeFromSuperview()
+        backButton.removeFromSuperview()
+        selectDifficultViewController.remove()
+        selectSizeViewController.remove()
+        viewModel?.cleanViewModel()
+        selectDifficultViewController = SelectViewController()
+        selectSizeViewController = SelectViewController()
+        setupSelectDifficult()
+        setupSelectSize()
+        setupStackView()
     }
 
     private func setupSelectDifficult() {

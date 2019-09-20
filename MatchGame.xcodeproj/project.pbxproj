@@ -19,7 +19,7 @@
 		766E64C02329DA3F0025E9E3 /* MatchGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E64BF2329DA3E0025E9E3 /* MatchGameViewController.swift */; };
 		766E64C3232B17B20025E9E3 /* ResourcesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E64C2232B17B20025E9E3 /* ResourcesExtension.swift */; };
 		766E64CC232B288D0025E9E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766E64C8232B288D0025E9E3 /* LaunchScreen.storyboard */; };
-		766E64CF232B28C90025E9E3 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E64CE232B28C90025E9E3 /* Service.swift */; };
+		766E64CF232B28C90025E9E3 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E64CE232B28C90025E9E3 /* ProductService.swift */; };
 		766E64FA232B4B8B0025E9E3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E64F9232B4B8B0025E9E3 /* Product.swift */; };
 		766E64FE232B58B20025E9E3 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E64FD232B58B20025E9E3 /* Result.swift */; };
 		766E6504232B5B3F0025E9E3 /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E6503232B5B3F0025E9E3 /* ProductImage.swift */; };
@@ -37,6 +37,8 @@
 		766E6522232E25960025E9E3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 766E6521232E25960025E9E3 /* Localizable.strings */; };
 		766E6532232F1D2D0025E9E3 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E6531232F1D2D0025E9E3 /* GameTests.swift */; };
 		766E6534232F2A5D0025E9E3 /* MatchGameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E6533232F2A5D0025E9E3 /* MatchGameViewModelTests.swift */; };
+		766E65362330B3820025E9E3 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E65352330B3820025E9E3 /* FontExtension.swift */; };
+		766E65382330BF3D0025E9E3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766E65372330BF3D0025E9E3 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,7 @@
 		766E64BF2329DA3E0025E9E3 /* MatchGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchGameViewController.swift; sourceTree = "<group>"; };
 		766E64C2232B17B20025E9E3 /* ResourcesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesExtension.swift; sourceTree = "<group>"; };
 		766E64C9232B288D0025E9E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		766E64CE232B28C90025E9E3 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		766E64CE232B28C90025E9E3 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		766E64F9232B4B8B0025E9E3 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		766E64FD232B58B20025E9E3 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		766E6503232B5B3F0025E9E3 /* ProductImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		766E652B232F1CF00025E9E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		766E6531232F1D2D0025E9E3 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		766E6533232F2A5D0025E9E3 /* MatchGameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchGameViewModelTests.swift; sourceTree = "<group>"; };
+		766E65352330B3820025E9E3 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		766E65372330BF3D0025E9E3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		F83AF74C58D224F1983C0C5C /* Pods-MatchGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchGame.debug.xcconfig"; path = "Target Support Files/Pods-MatchGame/Pods-MatchGame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,7 +236,7 @@
 		766E64C6232B280C0025E9E3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				766E64CE232B28C90025E9E3 /* Service.swift */,
+				766E64CE232B28C90025E9E3 /* ProductService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -278,6 +282,8 @@
 			children = (
 				766E651C232DCFEC0025E9E3 /* Palette.swift */,
 				766E651E232DFCC20025E9E3 /* Loadable.swift */,
+				766E65352330B3820025E9E3 /* FontExtension.swift */,
+				766E65372330BF3D0025E9E3 /* CustomButton.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -467,7 +473,8 @@
 				766E64FE232B58B20025E9E3 /* Result.swift in Sources */,
 				766E64B02329C7F60025E9E3 /* Card.swift in Sources */,
 				766E651A232D980A0025E9E3 /* OptionCellViewModel.swift in Sources */,
-				766E64CF232B28C90025E9E3 /* Service.swift in Sources */,
+				766E65382330BF3D0025E9E3 /* CustomButton.swift in Sources */,
+				766E64CF232B28C90025E9E3 /* ProductService.swift in Sources */,
 				766E64BB2329D2AF0025E9E3 /* CellProtocol.swift in Sources */,
 				766E650A232C9EBB0025E9E3 /* Game.swift in Sources */,
 				766E6511232CB69C0025E9E3 /* SelectViewController.swift in Sources */,
@@ -478,6 +485,7 @@
 				766E651F232DFCC20025E9E3 /* Loadable.swift in Sources */,
 				766E650C232CABE30025E9E3 /* InitialGameViewController.swift in Sources */,
 				766E6504232B5B3F0025E9E3 /* ProductImage.swift in Sources */,
+				766E65362330B3820025E9E3 /* FontExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

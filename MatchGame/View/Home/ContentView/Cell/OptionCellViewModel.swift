@@ -21,4 +21,5 @@ class OptionCellViewModel {
     init(title: String) {
         self.title = title
     }
+
 }

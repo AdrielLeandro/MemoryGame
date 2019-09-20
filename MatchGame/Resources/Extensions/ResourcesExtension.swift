@@ -55,7 +55,7 @@ extension UIViewController {
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.black,
-             NSAttributedString.Key.font: UIFont(name: "Chalkduster", size: 21)!]
+             NSAttributedString.Key.font: UIFont.largeRegularFont]
         return navigationController
     }
 

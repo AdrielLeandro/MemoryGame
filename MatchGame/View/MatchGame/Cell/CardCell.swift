@@ -14,7 +14,7 @@ class CardCell: UICollectionViewCell, CellProtocol {
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var frontImageView: UIImageView!
 
-    private var viewModel: CardCellViewModel! {
+    private var viewModel: CardCellViewModel? {
         didSet {
             setupCell()
         }
@@ -22,6 +22,9 @@ class CardCell: UICollectionViewCell, CellProtocol {
 
     private func setupCell() {
         setupUI()
+        guard let viewModel = viewModel else {
+            return
+        }
 
         if viewModel.card.isMatched {
             stateImages(for: false)
@@ -46,6 +49,10 @@ class CardCell: UICollectionViewCell, CellProtocol {
     }
 
     private func setupUI(){
+        guard let viewModel = viewModel else {
+            return
+        }
+
         layer.cornerRadius = 5
         frontImageView.sd_setImage(with: URL(string: viewModel.card.imageFrontPath), placeholderImage: nil, options: [], context: nil)
     }

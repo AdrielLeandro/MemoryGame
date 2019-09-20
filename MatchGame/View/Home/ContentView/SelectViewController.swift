@@ -13,7 +13,7 @@ class SelectViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Chalkduster", size: 25)
+        label.font = UIFont.largeRegularFont
         label.numberOfLines = 1
         label.textColor = .white
         return label
@@ -84,15 +84,11 @@ extension SelectViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModel = viewModel else {
+        guard let viewModel = viewModel, let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.identifier, for: indexPath) as? OptionCell else {
             return UITableViewCell()
         }
-
-        if let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.identifier, for: indexPath) as? OptionCell {
-            cell.setViewModel(viewModel: viewModel.getOptionCellViewModel(indexPath: indexPath))
-            return cell
-        }
-        return UITableViewCell()
+        cell.setViewModel(viewModel: viewModel.getOptionCellViewModel(indexPath: indexPath))
+        return cell
     }
 }
 

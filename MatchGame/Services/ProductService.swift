@@ -21,8 +21,8 @@ class ProductService: ProductServiceProtocol {
         Alamofire.request(url, method: .get, parameters:nil, encoding: URLEncoding.default).response { (response) in
 
             do {
-                guard let jsonResult = try JSONSerialization.jsonObject(with: response.data!, options: .mutableContainers) as? NSDictionary else {
-                    completion(nil, nil)
+                guard let data = response.data, let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary else {
+                    completion(nil, response.error?.localizedDescription)
                     return
                 }
                 let result = Result.from(jsonResult)
@@ -30,7 +30,7 @@ class ProductService: ProductServiceProtocol {
                 completion(cards, nil)
 
             } catch {
-                print("Error convert to json")
+                completion(nil, "Error convert to json")
             }
         }
     }

@@ -16,3 +16,5 @@
 
 "alert.ok-button" = "ok";
 "alert.cancel-button" = "Cancel";
+"internet-error.message" = "No Internet connection. Try again later. Ok.";
+"no-enough-cards-error.message" = "No enough cards to play. \nPlease try later.";

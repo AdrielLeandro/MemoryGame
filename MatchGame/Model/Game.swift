@@ -37,14 +37,6 @@ extension Game {
             case .hard: return 4
             }
         }
-
-        var title: String {
-            switch self {
-            case .easy: return "Easy"
-            case .medium: return "Medium"
-            case .hard: return "Hard"
-            }
-        }
     }
 
     enum Size: Int {
@@ -57,14 +49,6 @@ extension Game {
             case .low: return 10
             case .medium: return 15
             case .high: return 20
-            }
-        }
-
-        var title: String {
-            switch self {
-            case .low: return "Low"
-            case .medium: return "Medium"
-            case .high: return "High"
             }
         }
     }

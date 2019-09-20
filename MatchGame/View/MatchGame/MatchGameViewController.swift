@@ -22,7 +22,7 @@ class MatchGameViewController: UIViewController, Loadable {
     lazy var scoreLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Chalkduster", size: 18)
+        label.font = UIFont.mediumRegularFont
         label.text = "match-screen.point".localizedFormat(0)
         label.numberOfLines = 2
         label.textColor = .black
@@ -32,7 +32,7 @@ class MatchGameViewController: UIViewController, Loadable {
     lazy var machedCardCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Chalkduster", size: 18)
+        label.font = UIFont.mediumRegularFont
         label.numberOfLines = 2
         label.textColor = .black
         return label
@@ -55,9 +55,10 @@ class MatchGameViewController: UIViewController, Loadable {
         setupUI()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         startLoading()
+
     }
 
     private func setupUI() {
@@ -126,6 +127,7 @@ class MatchGameViewController: UIViewController, Loadable {
         viewModel.finishedGame = { [weak self] in
             self?.alertFinishedGame()
         }
+        
     }
 
     private func alertFinishedGame() {
@@ -180,14 +182,11 @@ extension MatchGameViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let viewModel = viewModel else { return UICollectionViewCell() }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier, for: indexPath)
-
-        if let cell = cell as? CardCell {
-            cell.fillCell(with: viewModel.getCardViewModel(indexPath: indexPath))
-            return cell
+        guard let viewModel = viewModel,  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.identifier, for: indexPath) as? CardCell else {
+            return UICollectionViewCell()
         }
-        return UICollectionViewCell()
+        cell.fillCell(with: viewModel.getCardViewModel(indexPath: indexPath))
+        return cell
     }
 
 }

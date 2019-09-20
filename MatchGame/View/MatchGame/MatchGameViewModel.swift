@@ -24,13 +24,11 @@ class MatchGameViewModel {
             game.mached = machedCount
             updateMached?(machedCount)
 
-            if machedCount == game.size.hashValue {
+            if machedCount == game.size.value {
                 finishedGame?()
             }
         }
     }
-
-
 
     var cardViewModelArray: [CardCellViewModel] = [] {
         didSet {
@@ -44,6 +42,7 @@ class MatchGameViewModel {
     var updateScore: ((Int) -> Void)?
     var updateMached: ((Int) -> Void)?
     var finishedGame: (() -> Void)?
+    var didSetError: ((String) -> Void)?
     var productService: ProductServiceProtocol
 
     init(game: Game, service: ProductServiceProtocol) {
@@ -55,12 +54,11 @@ class MatchGameViewModel {
 extension MatchGameViewModel {
 
     func service() {
-        productService.getProducts { (cards, error) in
+        productService.getProducts { [weak self] (cards, error) in
             if let cards = cards {
-                self.setupCardArray(cards: cards)
+                self?.setupCardArray(cards: cards)
             } else {
-                // HAY UN ERROR.
-                // No Internet connection. Try again later. Ok.
+                self?.didSetError?("internet-error.message".localized)
             }
         }
     }
@@ -68,9 +66,10 @@ extension MatchGameViewModel {
     private func setupCardArray(cards: [Card]) {
         self.cards = cards
         if cards.count < (game.size.value * game.difficult.value) {
-            // No enough cards to play. Ok.
+            self.didSetError?("no-enough-cards-error.message".localized)
         } else {
             cardViewModelArray = Array(cards.prefix(game.size.value)).repeated(count: game.difficult.value).map { CardCellViewModel(card: $0)}
+            cardViewModelArray.shuffle()
         }
     }
 
@@ -133,6 +132,7 @@ extension MatchGameViewModel {
         score = 0
         machedCount = 0
         cardViewModelArray = Array(cards.prefix(game.size.value)).repeated(count: game.difficult.value).map { CardCellViewModel(card: $0)}
+        cardViewModelArray.shuffle()
         matchArray.removeAll()
     }
 

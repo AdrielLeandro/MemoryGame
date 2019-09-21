@@ -18,15 +18,18 @@ class InitialGameViewModel {
 
     func getDifficultViewModel() -> SelectViewModel {
         return SelectViewModel(typeOption: .difficult, selectOption: { [weak self] (optionDifficult) in
-            self?.didSelectDifficult?()
-            self?.difficultOption = Game.Difficult(rawValue: optionDifficult)
+            guard let self = self else { return }
+            self.didSelectDifficult?()
+            self.difficultOption = Game.Difficult(rawValue: optionDifficult)
         })
     }
 
     func getSizeViewModel() -> SelectViewModel {
         return SelectViewModel(typeOption: .size, selectOption: { [weak self] (optionSize) in
-            self?.didSelectSize?()
-            self?.sizeOption = Game.Size(rawValue: optionSize)
+            guard let self = self else { return }
+
+            self.didSelectSize?()
+            self.sizeOption = Game.Size(rawValue: optionSize)
         })
     }
 

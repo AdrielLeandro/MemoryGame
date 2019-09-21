@@ -58,7 +58,6 @@ class MatchGameViewController: UIViewController, Loadable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startLoading()
-
     }
 
     private func setupUI() {
@@ -119,9 +118,8 @@ class MatchGameViewController: UIViewController, Loadable {
             self?.scoreLabel.text = "match-screen.point".localizedFormat(score)
         }
 
-        viewModel.updateMached = { [weak self] mached in
-            let size = viewModel.getSize()
-            self?.machedCardCountLabel.text = "match-screen.mached".localizedFormat("\(mached)/\(size)")
+        viewModel.updateMached = { [weak self] (machedCount, size) in
+            self?.machedCardCountLabel.text = "match-screen.mached".localizedFormat("\(machedCount)/\(size)")
         }
 
         viewModel.finishedGame = { [weak self] in
@@ -129,6 +127,7 @@ class MatchGameViewController: UIViewController, Loadable {
         }
 
         viewModel.didSetError = { [weak self] message in
+            guard let self = self else  { return }
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "alert.ok-button".localized, style: .default) { [weak self] _ in

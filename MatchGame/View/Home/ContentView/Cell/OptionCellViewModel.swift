@@ -10,10 +10,10 @@ import Foundation
 
 class OptionCellViewModel {
 
-    var updateCell: (() -> Void)?
+    var updateCell: ((Bool) -> Void)?
     var selected: Bool = false {
         didSet {
-            updateCell?()
+            updateCell?(selected)
         }
     }
     var title: String

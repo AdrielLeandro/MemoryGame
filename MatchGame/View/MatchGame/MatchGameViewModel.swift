@@ -22,8 +22,7 @@ class MatchGameViewModel {
     var machedCount: Int = 0 {
         didSet {
             game.mached = machedCount
-            updateMached?(machedCount)
-
+            updateMached?(machedCount, getSize())
             if machedCount == game.size.value {
                 finishedGame?()
             }
@@ -40,7 +39,7 @@ class MatchGameViewModel {
     var cards: [Card] = []
     var cardDidLoad: (() -> Void)?
     var updateScore: ((Int) -> Void)?
-    var updateMached: ((Int) -> Void)?
+    var updateMached: ((Int, Int) -> Void)?
     var finishedGame: (() -> Void)?
     var didSetError: ((String) -> Void)?
     var productService: ProductServiceProtocol
@@ -49,6 +48,7 @@ class MatchGameViewModel {
         self.game = game
         self.productService = service
     }
+
 }
 
 extension MatchGameViewModel {

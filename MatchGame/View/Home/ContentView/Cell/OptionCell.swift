@@ -25,8 +25,8 @@ class OptionCell: UITableViewCell, CellProtocol {
         }
 
         titleLabel.text = viewModel.title
-        viewModel.updateCell = { [weak self] in
-            if viewModel.selected {
+        viewModel.updateCell = { [weak self] selected in
+            if selected {
                 self?.containerView.backgroundColor =  Palette.wheat
             } else {
                 self?.containerView.backgroundColor =  Palette.beige

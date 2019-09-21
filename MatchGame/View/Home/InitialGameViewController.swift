@@ -26,36 +26,13 @@ class InitialGameViewController: UIViewController {
         return view
     }()
 
-    lazy var continueButton: UIButton = {
-        let button = CustomButton()
-        button.setTitle("Continue", for: .normal)
-        button.addTarget(self, action: #selector(didTouchContinueButton), for: .touchUpInside)
-        return button
-    }()
-
-    lazy var backButton: UIButton = {
-        let button = CustomButton()
-        button.setTitle("Back", for: .normal)
-        button.addTarget(self, action: #selector(didTouchBackButton), for: .touchUpInside)
-        return button
-    }()
-
     lazy var startButton: UIButton = {
         let button = CustomButton()
         button.setTitle("Start", for: .normal)
         button.addTarget(self, action: #selector(didTouchStartButton), for: .touchUpInside)
+        button.alpha = 0
         return button
     }()
-
-    lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.spacing = 20
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-
 
     var selectDifficultViewController = SelectViewController()
     var selectSizeViewController = SelectViewController()
@@ -83,9 +60,7 @@ class InitialGameViewController: UIViewController {
         setupTitleLabel()
         setupContainerView()
         setupSelectDifficult()
-        setupSelectSize()
-        setupStackView()
-        setupButton()
+        setupStarButton()
     }
 
     private func setupTitleLabel() {
@@ -103,40 +78,16 @@ class InitialGameViewController: UIViewController {
         containerView.heightAnchor.constraint(equalToConstant: 250).isActive = true
     }
 
-    private func setupButton() {
-        continueButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        continueButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
-        backButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        backButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
-        startButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        startButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    private func setupStarButton() {
+        view.addSubview(startButton)
+        startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        startButton.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 40).isActive = true
+        startButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
     }
 
-    private func setupStackView() {
-        view.addSubview(stackView)
-        stackView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 30).isActive = true
-        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-
-        stackView.addArrangedSubview(continueButton)
-    }
-
-    @objc private func didTouchContinueButton() {
+    @objc private func didSelectDifficult() {
+        selectSizeViewController.viewModel = viewModel?.getSizeViewModel()
         cycleFromViewController(oldViewController: selectDifficultViewController, toViewController: selectSizeViewController, view: containerView)
-        stackView.removeArrangedSubview(continueButton)
-        continueButton.removeFromSuperview()
-        stackView.addArrangedSubview(backButton)
-        stackView.addArrangedSubview(startButton)
-    }
-
-    @objc private func didTouchBackButton() {
-        cycleFromViewController(oldViewController: selectSizeViewController, toViewController: selectDifficultViewController, view: containerView)
-        stackView.removeArrangedSubview(backButton)
-        stackView.removeArrangedSubview(startButton)
-        backButton.removeFromSuperview()
-        startButton.removeFromSuperview()
-        stackView.addArrangedSubview(continueButton)
     }
 
     @objc private func didTouchStartButton() {
@@ -149,36 +100,29 @@ class InitialGameViewController: UIViewController {
     }
 
     private func cleanView() {
-        stackView.removeFromSuperview()
-        startButton.removeFromSuperview()
-        backButton.removeFromSuperview()
+        startButton.alpha = 0
         selectDifficultViewController.remove()
         selectSizeViewController.remove()
         viewModel?.cleanViewModel()
         selectDifficultViewController = SelectViewController()
         selectSizeViewController = SelectViewController()
         setupSelectDifficult()
-        setupSelectSize()
-        setupStackView()
-    }
-
-    private func setupSelectDifficult() {
-        selectDifficultViewController.viewModel = viewModel?.getDifficultViewModel()
-        add(selectDifficultViewController, view: containerView)
-    }
-
-    private func setupSelectSize() {
-        selectSizeViewController.viewModel = viewModel?.getSizeViewModel()
     }
 
     private func setupViewModel() {
         viewModel?.didSelectDifficult = { [weak self] in
-            self?.continueButton.isUserInteractionEnabled = true
+            self?.didSelectDifficult()
+            self?.startButton.alpha = 1
         }
 
         viewModel?.didSelectSize = { [weak self] in
             self?.startButton.isUserInteractionEnabled = true
         }
+    }
+
+    private func setupSelectDifficult() {
+        selectDifficultViewController.viewModel = viewModel?.getDifficultViewModel()
+        add(selectDifficultViewController, view: containerView)
     }
 
 }

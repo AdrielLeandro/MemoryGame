@@ -127,6 +127,17 @@ class MatchGameViewController: UIViewController, Loadable {
         viewModel.finishedGame = { [weak self] in
             self?.alertFinishedGame()
         }
+
+        viewModel.didSetError = { [weak self] message in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "alert.ok-button".localized, style: .default) { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.popViewController(animated: true)
+            })
+
+            self.present(alert, animated: true, completion: .none)
+        }
         
     }
 

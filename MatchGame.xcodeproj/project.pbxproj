@@ -169,10 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				766E64AF2329C7F60025E9E3 /* Card.swift */,
+				766E6509232C9EBA0025E9E3 /* Game.swift */,
 				766E64F9232B4B8B0025E9E3 /* Product.swift */,
 				766E64FD232B58B20025E9E3 /* Result.swift */,
 				766E6503232B5B3F0025E9E3 /* ProductImage.swift */,
-				766E6509232C9EBA0025E9E3 /* Game.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

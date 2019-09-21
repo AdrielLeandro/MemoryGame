@@ -17,7 +17,7 @@ class SelectViewModel {
             optionDidLoad?()
         }
     }
-    var selectOption:((Int) -> Void)?
+    var selectOption: ((Int) -> Void)?
     var optionDidLoad: (() -> Void)?
     let typeOption: TypeOption
 
